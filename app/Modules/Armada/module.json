@@ -1,0 +1,8 @@
+{
+	"name": "Armada",
+	"slug": "armada",
+	"namespace": "Armada",
+	"version": "1.0.0",
+	"description": "Armada Otobus",
+	"enabled": true
+}

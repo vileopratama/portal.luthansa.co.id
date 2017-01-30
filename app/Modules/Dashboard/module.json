@@ -1,0 +1,8 @@
+{
+	"name": "Dashboard",
+	"slug": "dashboard",
+	"namespace": "Dashboard",
+	"version": "1.0.0",
+	"description": "Dashboard",
+	"enabled": true
+}

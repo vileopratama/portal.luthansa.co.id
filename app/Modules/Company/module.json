@@ -1,0 +1,8 @@
+{
+	"name": "Company",
+	"slug": "company",
+	"namespace": "Company",
+	"version": "1.0.0",
+	"description": "Company Module",
+	"enabled": true
+}

@@ -1,0 +1,8 @@
+{
+	"name": "Report Schedule Order",
+	"slug": "report-schedule-order",
+	"namespace": "ReportScheduleOrder",
+	"version": "1.0.0",
+	"description": "Report Schedule Order",
+	"enabled": true
+}

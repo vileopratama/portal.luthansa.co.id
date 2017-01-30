@@ -1,0 +1,8 @@
+{
+	"name": "Report Order Payment",
+	"slug": "report-order-payment",
+	"namespace": "ReportOrderPayment",
+	"version": "1.0.0",
+	"description": "Report Order Payment",
+	"enabled": true
+}

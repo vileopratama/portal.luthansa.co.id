@@ -1,0 +1,8 @@
+{
+	"name": "SPJ",
+	"slug": "sales-spj",
+	"namespace": "SalesSpj",
+	"version": "1.0.0",
+	"description": "Sales SPJ",
+	"enabled": true
+}

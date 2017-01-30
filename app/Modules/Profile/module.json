@@ -1,0 +1,8 @@
+{
+	"name": "Profile",
+	"slug": "profile",
+	"namespace": "Profile",
+	"version": "1.0.0",
+	"description": "Profile User",
+	"enabled": true
+}

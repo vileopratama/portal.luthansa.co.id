@@ -1,0 +1,8 @@
+{
+	"name": "Report Sales Summary",
+	"slug": "report-sales-summary",
+	"namespace": "ReportSalesSummary",
+	"version": "1.0.0",
+	"description": "Report Sales Summary",
+	"enabled": true
+}

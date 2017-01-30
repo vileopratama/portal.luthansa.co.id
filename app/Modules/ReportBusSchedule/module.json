@@ -1,0 +1,8 @@
+{
+	"name": "Report Bus Schedule",
+	"slug": "report-bus-schedule",
+	"namespace": "ReportBusSchedule",
+	"version": "1.0.0",
+	"description": "Bus Schedule",
+	"enabled": true
+}

@@ -1,0 +1,8 @@
+{
+	"name": "Sales Order Confirm Payment",
+	"slug": "sales-confirm-payment",
+	"namespace": "SalesConfirmPayment",
+	"version": "1.0.0",
+	"description": "Sales Order Confirm Payment",
+	"enabled": true
+}

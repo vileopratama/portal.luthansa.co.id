@@ -1,0 +1,8 @@
+{
+	"name": "Report Income Expense",
+	"slug": "report-income-expense",
+	"namespace": "ReportIncomeExpense",
+	"version": "1.0.0",
+	"description": "Report Income Expense",
+	"enabled": true
+}

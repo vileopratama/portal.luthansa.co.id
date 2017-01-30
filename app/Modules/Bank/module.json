@@ -1,0 +1,8 @@
+{
+	"name": "Bank",
+	"slug": "bank",
+	"namespace": "Bank",
+	"version": "1.0.0",
+	"description": "Bank",
+	"enabled": true
+}

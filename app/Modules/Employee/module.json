@@ -1,0 +1,8 @@
+{
+	"name": "Employee",
+	"slug": "employee",
+	"namespace": "Employee",
+	"version": "1.0.0",
+	"description": "Employee",
+	"enabled": true
+}

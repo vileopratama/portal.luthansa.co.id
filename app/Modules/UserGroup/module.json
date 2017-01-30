@@ -1,0 +1,8 @@
+{
+	"name": "User Group",
+	"slug": "user-group",
+	"namespace": "UserGroup",
+	"version": "1.0.0",
+	"description": "User Group Module",
+	"enabled": true
+}

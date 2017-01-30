@@ -1,0 +1,8 @@
+{
+	"name": "Department",
+	"slug": "department",
+	"namespace": "Department",
+	"version": "1.0.0",
+	"description": "Department",
+	"enabled": true
+}
