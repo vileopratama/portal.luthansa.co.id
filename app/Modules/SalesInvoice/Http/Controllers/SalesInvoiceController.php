@@ -377,12 +377,12 @@ class SalesInvoiceController extends Controller {
 		PDF::Cell(30,8,Lang::get('printer.be regarded').' :',0,0,'L',false,'',0,8,'T','M');
 		$x=$x+35;$y=$y;
 		
-		$be_regarded = "##";
+		$be_regarded_description = "##";
 		if($total>0) {
-			$be_regarded = be_regarded($total);
+			$be_regarded_description = be_regarded($total)."".Lang::get("printer.rupiah");
 		}
 		
-		PDF::MultiCell(120,8,"## ".$be_regarded."".Lang::get("printer.rupiah")." ##",1,'C',false,1,$x,$y,true,0,false,true,8,'M',false);
+		PDF::MultiCell(120,8,"## ".$be_regarded_description." ##",1,'C',false,1,$x,$y,true,0,false,true,8,'M',false);
 		
 		PDF::SetFont('Helvetica','B',7,'','false');
 		$x=$margin_left;$y=$y+10;
@@ -1249,7 +1249,7 @@ class SalesInvoiceController extends Controller {
 		->where('sales_invoice_payments.id',$id)
 		->first();
 		
-		PDF::SetTitle(Lang::get('global.receipt'));
+		PDF::SetTitle(Lang::get('printer.receipt'));
 		PDF::AddPage('L', 'A5');
 		PDF::SetFont('Helvetica','',8,'','false');
 		PDF::setJPEGQuality(100);
@@ -1333,9 +1333,9 @@ class SalesInvoiceController extends Controller {
 		PDF::SetXY($x+45,$y=$y);
 		PDF::Cell(90,10,strtoupper($sales_invoice_payment->customer_name),0,0,'L',false,'',0,10,'T','M');
 		
-		/*$x = $x;
+		$x = $x;
 		$y = $y + 8;
-		PDF::SetLineStyle(array('width'=>0.1,'color'=>array(105,105,105)));
+		/*PDF::SetLineStyle(array('width'=>0.1,'color'=>array(105,105,105)));
         PDF::Line($x,$y,$x+40,$y); //top*/
 		
 		$x = $margin_left+10;
@@ -1353,9 +1353,9 @@ class SalesInvoiceController extends Controller {
 		PDF::SetXY($x+45,$y=$y);
 		PDF::Cell(90,10,strtoupper(be_regarded($sales_invoice_payment->value)),0,0,'L',false,'',0,10,'T','M');
 		
-		/*$x = $x;
+		$x = $x;
 		$y = $y + 8;
-		PDF::SetLineStyle(array('width'=>0.1,'color'=>array(105,105,105)));
+		/*PDF::SetLineStyle(array('width'=>0.1,'color'=>array(105,105,105)));
         PDF::Line($x,$y,$x+40,$y); //top*/
 		
 		$x = $margin_left+10;
@@ -1373,10 +1373,10 @@ class SalesInvoiceController extends Controller {
 		PDF::SetXY($x+45,$y=$y);
 		PDF::Cell(90,10,number_format($sales_invoice_payment->percentage,2).' %',0,0,'L',false,'',0,10,'T','M');
 		
-		/*$x = $x;
+		$x = $x;
 		$y = $y + 8;
-		PDF::SetLineStyle(array('width'=>0.1,'color'=>array(105,105,105)));
-        PDF::Line($x,$y,$x+40,$y); //*/
+		/*PDF::SetLineStyle(array('width'=>0.1,'color'=>array(105,105,105)));
+        PDF::Line($x,$y,$x+40,$y); //top*/
 		
 		$x = $margin_left+10;
 		$y = $y;
@@ -1393,9 +1393,9 @@ class SalesInvoiceController extends Controller {
 		PDF::SetXY($x+45,$y=$y);
 		PDF::Cell(90,10,strtoupper($sales_invoice_payment->description ? $sales_invoice_payment->description : Lang::get('printer.payment invoice').' #'.$sales_invoice_payment->number ).' ',0,0,'L',false,'',0,10,'T','M');
 		
-		/*$x = $x;
+		$x = $x;
 		$y = $y + 8;
-		PDF::SetLineStyle(array('width'=>0.1,'color'=>array(105,105,105)));
+		/*PDF::SetLineStyle(array('width'=>0.1,'color'=>array(105,105,105)));
         PDF::Line($x,$y,$x+40,$y); //top*/
 		
 		$x = $margin_left+5;
@@ -1421,16 +1421,28 @@ class SalesInvoiceController extends Controller {
 		PDF::SetXY($x,$y=$y);
 		PDF::Cell(60,10,"Jakarta".', '.$sales_invoice_payment->payment_date,0,0,'L',false,'',0,10,'T','M');
 		
-		$x = $x - 15;
-		$y = $y+18;
-		PDF::SetXY($x,$y=$y);
+		$x = $x - 60;
+		$y = $y;
+		
+		PDF::SetXY($x,$y+12);
+		PDF::Cell(60,10,Lang::get('printer.be regards'),0,0,'C',false,'',0,10,'T','M');
+		
+		PDF::SetXY($x,$y+30);
+		PDF::Cell(60,10,"(".Setting::get('company_name').")",0,0,'C',false,'',0,10,'T','M');
+		
+		$x = $x + 45;
+		PDF::SetXY($x,$y+12);
+		PDF::Cell(60,10,Lang::get('printer.receiver'),0,0,'C',false,'',0,10,'T','M');
+		
+		//$x = $x - 15;
+		//$y = $y+18;
+		PDF::SetXY($x,$y+30);
 		PDF::Cell(60,10,$sales_invoice_payment->customer_name,0,0,'C',false,'',0,10,'T','M');
 		
-		
-		$x = $x;
-		$y = $y+3;
-		PDF::SetXY($x,$y=$y);
-		PDF::Cell(60,10,"( ".Lang::get("printer.customer")." )",0,0,'C',false,'',0,10,'T','M');
+		//$x = $x;
+		//$y = $y+3;
+		//PDF::SetXY($x,$y+32);
+		//PDF::Cell(60,10,"( ".Lang::get("printer.customer")." )",0,0,'C',false,'',0,10,'T','M');
 		
 		if($folder != '') {
 			PDF::Output(public_path($folder.'/receipt-'.$sales_invoice_payment->id.'.pdf'),$output);
