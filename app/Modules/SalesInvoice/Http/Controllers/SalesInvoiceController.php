@@ -1151,11 +1151,20 @@ class SalesInvoiceController extends Controller {
 					->selectRaw("DATE_FORMAT(invoice_date,'%d/%m/%Y') as invoice_date")
 					->where(['sales_invoices.id' => $sales_invoice_id])
 					->first();
-
-				//check sent email
+				
+				//update invoices
+				$fid = Input::get('id');
+				$this->preview($fid,'F','uploads');
+				
+				//update payment receipt
+				$pid = $payment_sales_invoice->id;
+				$this->print_payment($pid,$output='D',$folder='');
+				
+				
+				/**check sent email
 				if($is_sent_email && $get_sales_invoice->customer_email) {
 					$fid = Input::get('id');
-					$pdf_attachment = $this->preview($fid,'F','uploads');
+					
 
 					$send_email = Mail::send('emails.sales_invoice_payment',array('sales_invoice' => $get_sales_invoice),function($message) use($get_sales_invoice) {
 						$message->from('admin@luthansa.co.id', 'Invoice & Payment Luthansa Groups Tour & Transport');
@@ -1163,7 +1172,7 @@ class SalesInvoiceController extends Controller {
 						$message->subject("Luthansa Groups Invoice");
 						$message->attach(public_path('uploads/invoice-'.$get_sales_invoice->id.'.pdf'));
 					});
-				}
+				}**/
 
 				//params json
 				$params ['success'] =  true;
@@ -1430,7 +1439,7 @@ class SalesInvoiceController extends Controller {
 		PDF::Cell(60,10,Lang::get('printer.receiver'),0,0,'C',false,'',0,10,'T','M');
 
 
-		PDF::SetXY($x,$y+31);
+		PDF::SetXY($x,$y+28);
 		PDF::Cell(60,10,$sales_invoice_payment->customer_name,0,0,'C',false,'',0,10,'T','M');
 
 		$x = $x + 125;
@@ -1438,11 +1447,11 @@ class SalesInvoiceController extends Controller {
 		PDF::SetXY($x,$y+14);
 		PDF::Cell(60,10,Lang::get('printer.be regards'),0,0,'C',false,'',0,10,'T','M');
 
-		PDF::SetXY($x,$y+31);
+		PDF::SetXY($x,$y+28);
 		PDF::Cell(60,10,"(".Setting::get('company_name').")",0,0,'C',false,'',0,10,'T','M');
 
 		// Footer
-		PDF::SetAutoPageBreak(TRUE, 0);
+		//PDF::SetAutoPageBreak(TRUE, 0);
 		//PDF::SetY(135,true,true);
 
 		if($folder != '') {

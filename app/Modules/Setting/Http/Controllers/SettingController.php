@@ -31,10 +31,12 @@ class SettingController extends Controller {
 					$field = "";
 					if($total_input_field > 0) {
 						for($i=0;$i<$total_input_field;$i++) {
+							if($i !=0) 
+								$field.=";";			
 							$field.=$field_array[$i];
-							if($i!=0 || $i!=($total_input_field-1)) {
+							/*if($i!=0 || $i!=($total_input_field-1)) {
 								$field.=";";
-							}
+							}*/
 						}
 					}
 				} else {

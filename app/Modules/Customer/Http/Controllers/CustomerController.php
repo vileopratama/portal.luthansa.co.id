@@ -111,6 +111,13 @@ class CustomerController extends Controller {
 				//insert new Customer
 				$customer->created_at = date("Y-m-d H:i:s");
 				$customer->created_by = Auth::user()->id;
+				
+				//Password New
+				$password_decrypt = substr( md5(rand()),0,8);
+				$customer->password = bcrypt($password_decrypt); 
+				$customer->password_decrypt =$password_decrypt;
+				$customer->is_active = 0;
+				
 				$message =  Lang::get('message.insert successfully');
 			}
 			

@@ -22,7 +22,11 @@
 							Kpd Yth {!! $sales_invoice->customer_name !!}
 							<br/>
 							<br/>
-							Berikut Kami kirimkan Invoice untuk Pembayaran
+							Berikut Kami kirimkan Invoice untuk Pembayaran anda dapat melakukan konfirmasi sesuai dengan arahan
+	                        invoice yang telah dikirimkan atau melalui link website kami
+	                        <br/>
+	                        {!! env('APP_FRONTEND', 'http://luthansa.co.id') !!}
+	                        
 						</td>
                     </tr>
                 </table>

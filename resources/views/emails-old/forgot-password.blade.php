@@ -19,11 +19,11 @@
                 <table width="650px" cellspacing="0" cellpadding="3" class="container">
                     <tr>
                         <td>
-							Kpd Yth : {!! $customer->name !!}
-							<br/><br/>
-							Anda telah melakukan Request Mereset Password anda berikut adalah Linknya :
+							{!! Lang::get('global.to') !!} : {!! $customer->name !!}
 							<br/>
-							{!! env('APP_FRONTEND','http://localhost').'/session/reset-password/'.$customer->remember_token !!}
+							{!! Lang::get('global.click this link') !!}
+							<br/>
+							{!! url('/session/reset-password/'.$customer->remember_token) !!}
 						</td>
                     </tr>
                 </table>

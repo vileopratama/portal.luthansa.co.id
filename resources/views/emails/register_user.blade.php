@@ -19,12 +19,11 @@
                 <table width="650px" cellspacing="0" cellpadding="3" class="container">
                     <tr>
                         <td>
-							{!! Lang::get('message.luthansa registered user') !!}
-							<br/>
+							Terima kasih telah melakukan Register di Portal Luthansa Groups Tour & Travel
+	                        <br/><br/>
 							Berikut username login anda : <br/>
 							Email : {!! $customer->email !!} <br/>
 							Password : {!! $customer->password_decrypt != '' ?  $customer->password_decrypt : '**************' !!}	<br/><br/>							
-							Terima kasih telah melakukan pendaftaran via website kami.
 						</td>
                     </tr>
                 </table>
@@ -36,7 +35,7 @@
                     <tr>
                         <td>
                             <hr>
-                            <p>Copyright &copy; {!! date('Y') !!} Luthansa Groups Tour & Transport</p>
+                            <p>Copyright &copy; {!! date('Y') !!} Luthansa Groups, Tour & Transport</p>
                         </td>
                     </tr>
                 </table>

@@ -9,7 +9,7 @@
                 <!-- This setup makes the nav background stretch the whole width of the screen. -->
                 <table width="650px" cellspacing="0" cellpadding="3" class="container">
                     <tr class="navbar navbar-inverse">
-                        <td colspan="4"><a class="brand" href="{!! url('/') !!}"><img style="width:100%;height:100px" src="{!! asset('vendor/luthansa/img/logo.png') !!}" /></a></td>
+                        <td colspan="4"><a class="brand" href="{!! url('/') !!}"><img style="width:100%;height:150px" src="{!! asset('vendor/luthansa/img/logo.png') !!}" /></a></td>
                     </tr>
                 </table>
             </td>
@@ -19,11 +19,10 @@
                 <table width="650px" cellspacing="0" cellpadding="3" class="container">
                     <tr>
                         <td>
-							Kpd Yth : {!! $customer->name !!}
-							<br/><br/>
-							Anda telah melakukan Request Mereset Password anda berikut adalah Linknya :
+							Kpd Yth {!! $sales_order->customer_name !!}
 							<br/>
-							{!! env('APP_FRONTEND','http://localhost').'/session/reset-password/'.$customer->remember_token !!}
+							<br/>
+							Berikut Kami kirimkan Invoice untuk Pembayaran
 						</td>
                     </tr>
                 </table>

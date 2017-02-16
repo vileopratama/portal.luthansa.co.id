@@ -10,19 +10,19 @@
 						<tbody>
 							<tr valign="top">
 								<td style="width:50%">
-									<img src="{!! asset('vendor/luthansa/img/small-logo.png') !!}" border="0" alt="Luthansa Groups Tour & Transport" class="CToWUd">
+									<img src="{!! asset('vendor/luthansa/img/small-logo.png') !!}" border="0" alt="{!! Lang::get('global.luthansa') !!}" class="CToWUd">
 								</td>
 								<td valign="middle" style="width:50%" align="right">
-									Tgl.Order : {!! $data->order_date !!}
+									{!! Lang::get('global.order date') !!} : {!! date('d M Y H:i:s') !!}
 									<br>
-									No.Order <a href="#" target="_blank">#{!! $data->id !!}</a>
+									{!! Lang::get('global.queue number') !!} <a href="#" target="_blank">#13</a>
 					 			</td>
 							</tr>
 						</tbody>
 					</table>
 					<div style="margin-top:30px;color:#333!important;font-family:arial,helvetica,sans-serif;font-size:12px">
-						<span style="color:#333333!important;font-weight:bold;font-family:arial,helvetica,sans-serif">Kpd Yth {!! $data->customer_name !!},</span><br><br>
-						<p style="font-size:8px;color:#c88039;font-weight:bold;text-decoration:none">Terima kasih anda telah melakukan Order di Luthansa Group Tour and Transport, Total pembayaran akan dikalkulasikan oleh Bagian Admin kami pada saat anda selesai order , harap mengisi No Handphone & alamat email dengan benar, kami akan informasikan melalui nomor handphone atau email, Terima kasih.</p>
+						<span style="color:#333333!important;font-weight:bold;font-family:arial,helvetica,sans-serif">{!! Lang::get('global.hello') !!} Username,</span><br><br>
+						<p style="font-size:14px;color:#c88039;font-weight:bold;text-decoration:none">{!! Lang::get('message.luthansa order notice') !!}</p>
 						<div style="margin-top:5px;clear:both">
 							<hr size="1">
 						</div>
@@ -62,10 +62,10 @@
 						<table align="center" border="0" cellpadding="0" cellspacing="0" style="clear:both;color:#666666!important;font-family:arial,helvetica,sans-serif;font-size:11px" width="100%">
 							<tbody>
 								<tr>
-									<td style="border:1px solid #ccc;border-right:none;border-left:none;padding:5px 10px 5px 10px!important;color:#333333!important" width="350" align="left">Jenis Kendaraan</td>
+									<td style="border:1px solid #ccc;border-right:none;border-left:none;padding:5px 10px 5px 10px!important;color:#333333!important" width="350" align="left">{!! Lang::get('global.transportation type') !!}</td>
 									
-									<td style="border:1px solid #ccc;border-right:none;border-left:none;padding:5px 10px 5px 10px!important;color:#333333!important" width="50" align="right">Unit</td>
-									<td style="border:1px solid #ccc;border-right:none;border-left:none;padding:5px 10px 5px 10px!important;color:#333333!important" width="80" align="right">Hari</td>
+									<td style="border:1px solid #ccc;border-right:none;border-left:none;padding:5px 10px 5px 10px!important;color:#333333!important" width="50" align="right">{!! Lang::get('global.unit') !!}</td>
+									<td style="border:1px solid #ccc;border-right:none;border-left:none;padding:5px 10px 5px 10px!important;color:#333333!important" width="80" align="right">{!! Lang::get('global.days') !!}</td>
 								</tr>
 								<tr>
 									<td style="padding:10px" align="left" colspan="3">Booking dari {!! $data->booking_from_date !!} sampai {!! $data->booking_to_date !!} ({!! $data->booking_total_days!!} hari )</td>

@@ -35,13 +35,13 @@ class SalesConfirmPaymentController extends Controller {
 		->sortable(['created_at' => 'asc']);
 		
 		if(Request::has("query")) {
-			$sales_order = $sales_order->whereRaw("CONCAT(number,' ',customers.name) LIKE '%".Request::get("query")."%'");
+			$sales_order_confirm_payment = $sales_order_confirm_payment->whereRaw("CONCAT(number,' ',customers.name) LIKE '%".Request::get("query")."%'");
 		}
 		if(Request::has("date_from")) {
-			$sales_order = $sales_order->where('payment_date','>=',preg_replace('!(\d+)/(\d+)/(\d+)!', '\3-\2-\1', Request::get("date_from")));
+			$sales_order_confirm_payment = $sales_order_confirm_payment->where('payment_date','>=',preg_replace('!(\d+)/(\d+)/(\d+)!', '\3-\2-\1', Request::get("date_from")));
 		}
 		if(Request::has("date_to")) {
-			$sales_order = $sales_order->where('payment_date','<=',preg_replace('!(\d+)/(\d+)/(\d+)!', '\3-\2-\1', Request::get("date_to")));
+			$sales_order_confirm_payment = $sales_order_confirm_payment->where('payment_date','<=',preg_replace('!(\d+)/(\d+)/(\d+)!', '\3-\2-\1', Request::get("date_to")));
 		}
 	
 		
@@ -87,10 +87,15 @@ class SalesConfirmPaymentController extends Controller {
 	public function do_update(SalesOrderConfirmPayment $sales_order_confirm_payment) {
 		$id = Crypt::decrypt(Input::get('id'));
 		$status  = Input::get('status');
-		$sales_order_confirm_payment = $sales_order_confirm_payment::find($id);
+		$sales_order_confirm_payment = $sales_order_confirm_payment
+			->where('status','=',0)
+			->where('id','=',$id)
+			->first();
 		
 		if($status == 2 && $sales_order_confirm_payment) {
 			$sales_order_confirm_payment->status = 2; //rejected
+			$sales_order_confirm_payment->updated_at = '0000-00-00 00:00:00';
+			$sales_order_confirm_payment->updated_by = 0;
 			$sales_order_confirm_payment->save();
 			$params = array(
                 'success' => true,
@@ -98,15 +103,18 @@ class SalesConfirmPaymentController extends Controller {
 				'redirect' => url('/sales-confirm-payment'),
             );
 			
-		} elseif($status == 1 && $sales_order_confirm_payment) {
+		} else if($status == 1 && $sales_order_confirm_payment) {
 			$sales_order_id = $sales_order_confirm_payment->sales_order_id;
 			$sales_order_confirm_payment->status = 1; //approved
+			$sales_order_confirm_payment->updated_at = '0000-00-00 00:00:00';
+			$sales_order_confirm_payment->updated_by = 0;
 			$sales_order_confirm_payment->save();
 			
 			//insert sales invoice
 			$sales_order = SalesOrder::find($sales_order_id);
 			$sales_invoice = new SalesInvoice();
 			$sales_invoice->sales_order_id = $sales_order->id;
+			$sales_invoice->order_number = $sales_order->order_number;
 			$sales_invoice->number = $sales_order->number;
 			$sales_invoice->invoice_date = $sales_order->order_date;
 			$sales_invoice->due_date = $sales_order->due_date;
@@ -125,13 +133,16 @@ class SalesConfirmPaymentController extends Controller {
 			$sales_invoice->created_by = Auth::user()->id;
 			$sales_invoice->save();
 			
+			//sales invoice
+			$sales_invoice_id = $sales_invoice->id;
+			
 			//insert sales order details 
 			$sales_order_details = SalesOrderDetail::where(['sales_order_id' => $sales_order->id])
 			->get();
 			
 			foreach($sales_order_details as $key => $row) {
 				$sales_invoice_details = new SalesInvoiceDetail();
-				$sales_invoice_details->sales_invoice_id = $sales_invoice->id;
+				$sales_invoice_details->sales_invoice_id = $sales_invoice_id;
 				$sales_invoice_details->armada_category_id = $row->armada_category_id;
 				$sales_invoice_details->qty = $row->qty;
 				$sales_invoice_details->description = $row->description;
@@ -145,7 +156,7 @@ class SalesConfirmPaymentController extends Controller {
 			->get();
 			foreach($sales_order_costs as $key => $row2) {
 				$sales_invoice_cost = new SalesInvoiceCost();
-				$sales_invoice_cost->sales_invoice_id = $sales_invoice->id;
+				$sales_invoice_cost->sales_invoice_id = $sales_invoice_id;
 				$sales_invoice_cost->description = $row2->description;
 				$sales_invoice_cost->cost = $row2->cost;
 				$sales_invoice_cost->save();
@@ -154,7 +165,7 @@ class SalesConfirmPaymentController extends Controller {
 			//insert sales payment 
 			$sales_order_confirm_payment = $sales_order_confirm_payment::find($id);
 			$sales_invoice_payment = new SalesInvoicePayment();
-			$sales_invoice_payment->sales_invoice_id = $sales_invoice->id;
+			$sales_invoice_payment->sales_invoice_id = $sales_invoice_id;
 			$sales_invoice_payment->account_id = $sales_order_confirm_payment->account_id;
 			$sales_invoice_payment->payment_date = $sales_order_confirm_payment->payment_date;
 			$sales_invoice_payment->percentage = ($sales_order_confirm_payment->total_payment/$sales_order_confirm_payment->total_bill) * 100;
@@ -164,44 +175,57 @@ class SalesConfirmPaymentController extends Controller {
 			$sales_invoice_payment->created_by = Auth::user()->id;
 			$sales_invoice_payment->save();
 			
-			//sent email
+			//paid or not
+			$status = 1; //process
+			$sum_sales_invoice = $sales_invoice->total;
+			$sum_sales_invoice_payment = SalesInvoicePayment::where('sales_invoice_id', '=', $sales_invoice_id)->sum('value');
+			//set paid if payment >= total invoice
+			if($sum_sales_invoice_payment >= $sum_sales_invoice) {
+				$status = 2;
+			}
+			
+			//update paid or process
+			SalesInvoice::where('id',$sales_invoice_id)->update(['status' => $status,'payment' => !$sum_sales_invoice_payment ? 0 : $sum_sales_invoice_payment]);
+			
+			//sent archive
 			$userfile = public_path('uploads/receipt-'.$sales_invoice_payment->id.'.pdf');
 			
 			if(!File::exists($userfile)) {
 				$invoice_id = Crypt::encrypt($sales_invoice_payment->id);
 				$sales_invoice = new \App\Modules\SalesInvoice\Http\Controllers\SalesInvoiceController();
-				$pdf_attachment = $sales_invoice->print_payment($invoice_id,'F','uploads');
+				$sales_invoice->print_payment($invoice_id,'F','uploads');
 			}
 			
-			$sales_invoice_payment = SalesInvoicePayment::join('sales_invoices','sales_invoices.id','=','sales_invoice_payments.sales_invoice_id')
+			/**
+			 * $sales_invoice_payment = SalesInvoicePayment::join('sales_invoices','sales_invoices.id','=','sales_invoice_payments.sales_invoice_id')
 			->join('customers','customers.id','=','sales_invoices.customer_id')
 			->join('accounts','accounts.id','=','sales_invoice_payments.account_id')
 			->selectRaw("sales_invoice_payments.*,sales_invoices.total,DATE_FORMAT(sales_invoice_payments.payment_date,'%d %M %Y') as payment_date,customers.name as customer_name,customers.email as customer_email,accounts.account_no,accounts.account_name")
 			->where('sales_invoice_payments.id','=',$sales_invoice_payment->id)
-			->first();
+			->first();*/
 			
 			/*sent email*/
-			Mail::send('emails.sales_invoice_accept_payment',array('data' => $sales_invoice_payment),function($message) use($sales_invoice_payment,$userfile) {
+			/*Mail::send('emails.sales_invoice_accept_payment',array('data' => $sales_invoice_payment),function($message) use($sales_invoice_payment,$userfile) {
 				$message->from('no-reply@luthansa.co.id', Lang::get('printer.receipt payment').' '.Lang::get('global.luthansa'));
 				$message->to($sales_invoice_payment->customer_email);
 				$message->subject(Lang::get('printer.receipt payment'));
-				//$userfile = public_path('uploads/receipt-'.$sales_invoice_payment->id.'.pdf');
 				if(File::exists($userfile)) {
 					$message->attach($userfile );
 				}
-			});
-			/*sent email*/
+			});*/
+			
 			
 			$params = array(
                 'success' => true,
                 'message' => Lang::get('message.update successfully for approved'),
-				'redirect' => url('/sales-invoice/view/'.Crypt::encrypt($sales_invoice->id)),
+				'redirect' => url('/sales-invoice/view/'.Crypt::encrypt($sales_invoice_id)),
             );
 			
 		} else {
 			$params = array(
                 'success' => false,
                 'message' => Lang::get('message.update failed'),
+				'redirect' => url('/sales-invoice'),
             );
 			
 		}

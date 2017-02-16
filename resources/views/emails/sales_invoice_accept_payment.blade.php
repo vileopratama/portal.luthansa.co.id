@@ -29,28 +29,24 @@
 						<td>
 							<table style="width:100%" cellspacing="0" cellpadding="3" >
 								<tr>
-									<td style="width:30%">{!! Lang::get('printer.payment date')!!}</td>
+									<td style="width:30%">Tgl.Pembayaran</td>
 									<td style="width:10%;text-align:center">:</td>
 									<td style="width:60%">{!! $data->payment_date !!}</td>
 								</tr>
 								<tr>
-									<td style="width:30%">{!! Lang::get('printer.to account')!!}</td>
+									<td style="width:30%">No.Rekening</td>
 									<td style="width:10%;text-align:center">:</td>
 									<td style="width:60%">{!! $data->account_no !!} {!! $data->account_name !!}</td>
 								</tr>
 								
 								<tr>
-									<td style="width:30%">{!! Lang::get('printer.total bill')!!}</td>
+									<td style="width:30%">Total Tagihan</td>
 									<td style="width:10%;text-align:center">:</td>
-									<td style="width:60%">{!! $data->total !!}</td>
+									<td style="width:60%">{!! number_format($data->total,2) !!}</td>
 								</tr>
+								
 								<tr>
-									<td style="width:30%">{!! Lang::get('printer.percentage')!!}</td>
-									<td style="width:10%;text-align:center">:</td>
-									<td style="width:60%">{!! number_format($data->percentage,2) !!} %</td>
-								</tr>
-								<tr>
-									<td style="width:30%">{!! Lang::get('printer.total payment')!!}</td>
+									<td style="width:30%">Total Pembayaran</td>
 									<td style="width:10%;text-align:center">:</td>
 									<td style="width:60%">{!! number_format($data->value,2) !!}</td>
 								</tr>
@@ -60,7 +56,17 @@
 					<tr>
                         <td>
 							<br/>
+	                        <br/>
 							Terima kasih atas kepercayaan anda memilih kami sebagai partner transportasi anda.
+	                        <br/>
+	                        <br/>
+	                        Management
+	                        <br/>
+	                        <br/>
+	                        <br/>
+	                        <br/>
+	                        <br/>
+	                        Luthansa Groups Tour & Transport
 						</td>
                     </tr>
 					

@@ -32,7 +32,7 @@
         <button type="button" class="navbar-toggle navbar-toggle-right collapsed" data-toggle="collapse"
                 data-target="#navbar-search" aria-expanded="false"><span class="sr-only">Toggle navigation</span> <span
                     class="zmdi zmdi-hc-lg zmdi-search"></span></button>
-        <a href="index.html" class="navbar-brand"><span class="brand-icon"><img src="{!! Theme::asset('images/logo.png') !!}" /></span></a>
+        <a href="{!! url('/') !!}" class="navbar-brand visible-lg visible-md visible-sm"><span class="brand-icon"><img src="{!! Theme::asset('images/logo.png') !!}" /></span></a>
     </div>
 
     <div class="navbar-container container-fluid">

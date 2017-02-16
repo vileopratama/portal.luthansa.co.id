@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net
 --
 -- Inang: localhost:3306
--- Waktu pembuatan: 14 Feb 2017 pada 09.30
+-- Waktu pembuatan: 13 Feb 2017 pada 10.39
 -- Versi Server: 5.5.54-cll
 -- Versi PHP: 5.6.20
 
@@ -635,7 +635,9 @@ INSERT INTO `sales_orders` (`id`, `type`, `source`, `order_number`, `number`, `o
 (37, 'Transport', 0, 27, '0027.11/XI/2016', '2016-11-30', '2016-12-31', '2017-01-04', '2017-01-08', 5, 0, 'DEPAN ALFA MIDI PASAR KEMBANG RAWA BELONG - JAKARTA BARAT', 'WISATA 9 WALI / WALISONGO 5HARI', 25, '', '', '', 1, 12500000, 0, '2016-12-31 20:32:56', 1, '0000-00-00 00:00:00', 0),
 (52, 'Transport', 0, 30, '0030.01/I/2017', '2017-01-18', '2017-01-18', '2017-01-19', '2017-01-19', 1, 0, 'Gatot subroto', 'Caringin - Bogor', 31, '', '', '', 1, 2700000, 0, '2017-01-18 10:26:33', 1, '2017-01-18 10:28:19', 1),
 (55, 'Transport', 0, 31, '0031.01/I/2017', '2017-01-10', '2017-01-10', '2017-01-10', '2017-01-10', 1, 0, '', '', 27, '', '', '', 1, 600000, 0, '2017-01-19 01:56:20', 1, '0000-00-00 00:00:00', 0),
-(56, 'Transport', 0, 32, '0032.02/II/2017', '2017-02-06', '2017-02-15', '2017-02-18', '2017-02-18', 1, 31, 'Jl. Jend. Gatot Subroto, Senayan Kebayoran Baru, Jakarta Selatan', 'Taman Safari Indonesia', 32, '', '', '', 1, 2250000, 0, '2017-02-06 15:05:43', 1, '2017-02-06 15:09:35', 1);
+(56, 'Transport', 0, 32, '0032.02/II/2017', '2017-02-06', '2017-02-15', '2017-02-18', '2017-02-18', 1, 31, 'Jl. Jend. Gatot Subroto, Senayan Kebayoran Baru, Jakarta Selatan', 'Taman Safari Indonesia', 32, '', '', '', 1, 2250000, 0, '2017-02-06 15:05:43', 1, '2017-02-06 15:09:35', 1),
+(57, 'Tour', 1, 0, '', '2017-02-13', '0000-00-00', '2017-02-13', '2017-02-14', 2, 2, 'Jl Kebayoran Baru no.90', 'Test', 33, 'OJK', 'hendarsyahss@gmail.com', '085222054064', 2, 0, 0, '2017-02-13 03:03:18', 33, '0000-00-00 00:00:00', 0),
+(58, 'Tour', 1, 0, '', '2017-02-13', '0000-00-00', '2017-02-13', '2017-02-14', 2, 12, 'Jl Kebayoran Baru no.90', 'Test', 33, 'OJK', 'hendarsyahss@gmail.com', '085222054064', 2, 0, 0, '2017-02-13 03:04:45', 33, '0000-00-00 00:00:00', 0);
 
 -- --------------------------------------------------------
 
@@ -741,7 +743,8 @@ INSERT INTO `sales_order_details` (`id`, `sales_order_id`, `armada_category_id`,
 (67, 37, 4, '', 0, 1, 'WISATA 9 WALI / WALISONGO 5HARI', 2500000, 5),
 (83, 52, 5, '', 0, 1, 'Bigbus 59seat', 2700000, 1),
 (90, 55, 1, '', 0, 2, 'Overtime Hi-Ace 2 Unit', 300000, 1),
-(92, 56, 4, '', 0, 1, 'Medium Bus Luxury', 2250000, 1);
+(92, 56, 4, '', 0, 1, 'Medium Bus Luxury', 2250000, 1),
+(93, 58, 1, 'Commuter Hi-Ace 15 Seats', 15, 1, '', 0, 2);
 
 -- --------------------------------------------------------
 
@@ -771,7 +774,7 @@ INSERT INTO `settings` (`int`, `key`, `value`) VALUES
 (8, 'company_signature_name', 'Luthansa Group'),
 (9, 'invoice_starting_number', '1'),
 (10, 'invoice_days_notification_due_date', '1'),
-(11, 'invoice_email_notifications', 'fahri@luthansa.co.id;hendarsyahss@gmail.com');
+(11, 'invoice_email_notifications', 'fahri@luthansa.co.id;hendarsyahss@gmail.com;');
 
 -- --------------------------------------------------------
 

@@ -19,11 +19,12 @@
                 <table width="650px" cellspacing="0" cellpadding="3" class="container">
                     <tr>
                         <td>
-							Kpd Yth : {!! $customer->name !!}
+							Dear {!! Lang::get('message.luthansa registered user') !!},
 							<br/><br/>
-							Anda telah melakukan Request Mereset Password anda berikut adalah Linknya :
-							<br/>
-							{!! env('APP_FRONTEND','http://localhost').'/session/reset-password/'.$customer->remember_token !!}
+							Berikut detail password baru anda : <br/>
+							Email : {!! $customer->email !!} <br/>
+							Password : {!! $customer->password_decrypt !!}	<br/>							
+							Terima kasih.
 						</td>
                     </tr>
                 </table>

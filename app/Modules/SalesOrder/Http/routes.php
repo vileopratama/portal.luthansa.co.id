@@ -16,7 +16,7 @@ Route::group(['prefix' => 'sales-order','middleware' => ['web']], function() {
 	Route::get('/create', ['uses' => 'SalesOrderController@create','middleware' => ['permission','access_create:sales-order']]);
 	Route::get('/view/{slug}', ['uses' => 'SalesOrderController@view','middleware' => ['permission','access_read:sales-order']]);
 	Route::get('/edit/{slug}', ['uses' => 'SalesOrderController@edit','middleware' => ['permission','access_update:sales-order']]);
-	Route::get('/preview/{slug}', ['uses' => 'SalesOrderController@preview','middleware' => ['permission','access_read:sales-order']]);
+	Route::get('/preview/{slug}', ['uses' => 'SalesOrderController@preview']);
 	Route::post('/do-update/item', ['uses' => 'SalesOrderController@do_update_item','middleware' => ['access_update:sales-order']]);
 	Route::post('/do-update/last_item', ['uses' => 'SalesOrderController@do_update_last_item','middleware' => ['permission','access_update:sales-order']]);
 	Route::post('/do-delete/item', ['uses' => 'SalesOrderController@do_delete_item','middleware' => ['permission','access_delete:sales-order']]);
