@@ -40,12 +40,12 @@ class MailReminderBooking extends Command
 				/*sent email*/
 				Mail::send('emails.sales-reminder-booking', array('data' => $row), function ($message) use ($row) {
 					$bcc = explode(';', trim(Setting::get('invoice_email_notifications')));
-					$message->from('no-reply@luthansa.co.id', 'Reminder Perjalanan Luthansa GroupTour & Transport');
+					$message->from('no-reply@luthansa.co.id', 'Reminder Perjalanan, Luthansa Group');
 					$message->to($row->customer_email);
 					if(count($bcc)>0) {
 						$message->bcc($bcc);
 					}
-					$message->subject('Reminder Perjalanan  Luthansa Group, Tour & Transport');
+					$message->subject('Reminder Perjalanan');
 				});
 			}
 		}

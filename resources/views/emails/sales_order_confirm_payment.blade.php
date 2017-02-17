@@ -9,7 +9,7 @@
                 <!-- This setup makes the nav background stretch the whole width of the screen. -->
                 <table width="650px" cellspacing="0" cellpadding="3" class="container">
                     <tr class="navbar navbar-inverse">
-                        <td colspan="4"><a class="brand" href="{!! url('/') !!}"><img style="width:100%;height:150px" src="{!! asset('vendor/luthansa/img/logo.png') !!}" alt="Luthansa Groups Tour & Transport" /></a></td>
+                        <td colspan="4"><a class="brand" href="{!! url('/') !!}"><img style="width:100%;height:150px" src="{!! asset('vendor/luthansa/img/logo.png') !!}" alt="Luthansa Group" /></a></td>
                     </tr>
                 </table>
             </td>
@@ -69,7 +69,7 @@
 	                        <br/>
 	                        <br/>
 	                        <br/>
-	                        Luthansa Groups Tour & Transport
+	                        Luthansa Group
 						</td>
                     </tr>
 					
@@ -82,7 +82,7 @@
                     <tr>
                         <td>
                             <hr>
-                            <p>Copyright &copy; {!! date('Y') !!} Luthansa Groups Tour & Transport</p>
+                            <p>Copyright &copy; {!! date('Y') !!} Luthansa Group</p>
                         </td>
                     </tr>
                 </table>

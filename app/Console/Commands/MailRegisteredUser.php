@@ -36,9 +36,9 @@ class MailRegisteredUser extends Command
 			  /*sent email*/
 			  if(!empty($customer->email)) {
                   Mail::send('emails.register_user', array('customer' => $customer), function ($message) use ($customer) {
-                      $message->from('no-reply@luthansa.co.id', 'Register User, Luthansa Group, Tour & Transport');
+                      $message->from('no-reply@luthansa.co.id', 'Register User, Luthansa Group');
                       $message->to($customer->email);
-                      $message->subject('Register User, Luthansa Group, Tour & Transport');
+                      $message->subject('Register User');
                   });
               }
               

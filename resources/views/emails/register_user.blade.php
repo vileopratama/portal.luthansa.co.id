@@ -19,7 +19,7 @@
                 <table width="650px" cellspacing="0" cellpadding="3" class="container">
                     <tr>
                         <td>
-							Terima kasih telah melakukan Register di Portal Luthansa Groups Tour & Travel
+							Terima kasih telah melakukan Register di Portal Luthansa Group
 	                        <br/><br/>
 							Berikut username login anda : <br/>
 							Email : {!! $customer->email !!} <br/>

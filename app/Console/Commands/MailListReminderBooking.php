@@ -40,9 +40,9 @@ class MailListReminderBooking extends Command
 		if(count($sales_invoices) > 0 && count($email_to) > 0) {
 			/*sent email*/
 			Mail::send('emails.sales-list-reminder-booking',array('rows' => $sales_invoices),function($message) use($email_to) {
-				$message->from('no-reply@luthansa.co.id','List Booking Luthansa GroupTour & Transport');
+				$message->from('no-reply@luthansa.co.id','List Booking, Luthansa Group');
 				$message->to($email_to);
-				$message->subject('List Booking Luthansa Group, Tour & Transport');
+				$message->subject('List Booking');
 			});
 		}
 	}

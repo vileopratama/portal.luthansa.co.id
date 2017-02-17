@@ -36,7 +36,7 @@ class MailForgotPassword extends Command
 			foreach($customers as $key => $customer) {
 				/*sent email*/
 				Mail::send('emails.forgot-password',array('customer' => $customer),function($message) use($customer) {
-					$message->from('no-reply@luthansa.co.id', 'Lupa Password, Luthansa Groups Tour & Transport');
+					$message->from('no-reply@luthansa.co.id', 'Lupa Password, Luthansa Group');
 					$message->to($customer->email);
 					$message->subject("Lupa Password");
 				});

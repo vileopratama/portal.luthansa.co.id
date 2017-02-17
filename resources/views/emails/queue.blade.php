@@ -10,7 +10,7 @@
 						<tbody>
 							<tr valign="top">
 								<td style="width:50%">
-									<img src="{!! asset('vendor/luthansa/img/small-logo.png') !!}" border="0" alt="Luthansa Groups Tour & Transport" class="CToWUd">
+									<img src="{!! asset('vendor/luthansa/img/small-logo.png') !!}" border="0" alt="Luthansa Group" class="CToWUd">
 								</td>
 								<td valign="middle" style="width:50%" align="right">
 									Tgl.Order : {!! $data->order_date !!}
@@ -22,7 +22,7 @@
 					</table>
 					<div style="margin-top:30px;color:#333!important;font-family:arial,helvetica,sans-serif;font-size:12px">
 						<span style="color:#333333!important;font-weight:bold;font-family:arial,helvetica,sans-serif">Kpd Yth {!! $data->customer_name !!},</span><br><br>
-						<p style="font-size:8px;color:#c88039;font-weight:bold;text-decoration:none">Terima kasih anda telah melakukan Order di Luthansa Group Tour and Transport, Total pembayaran akan dikalkulasikan oleh Bagian Admin kami pada saat anda selesai order , harap mengisi No Handphone & alamat email dengan benar, kami akan informasikan melalui nomor handphone atau email, Terima kasih.</p>
+						<p style="font-size:8px;color:#c88039;font-weight:bold;text-decoration:none">Terima kasih anda telah melakukan Order di Luthansa Group, Total pembayaran akan dikalkulasikan oleh Bagian Admin kami pada saat anda selesai order , harap mengisi No Handphone & alamat email dengan benar, kami akan informasikan melalui nomor handphone atau email, Terima kasih.</p>
 						<div style="margin-top:5px;clear:both">
 							<hr size="1">
 						</div>
@@ -81,7 +81,7 @@
 						</table>
 					</div>
 					<br><br>
-					<span>Copyright &copy; {!! date("Y") !!} Luthansa Group Tour &amp; Transport. All rights reserved.</span>
+					<span>Copyright &copy; {!! date("Y") !!} Luthansa Group. All rights reserved.</span>
 				</td>
 			</tr>
 		</tbody>

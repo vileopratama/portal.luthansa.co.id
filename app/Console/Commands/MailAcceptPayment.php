@@ -40,7 +40,7 @@ class MailAcceptPayment extends Command {
 			/*sent email*/
 			Mail::send('emails.sales_invoice_accept_payment',array('data' => $row),function($message) use($row) {
 				$bcc = explode(';',trim(Setting::get('invoice_email_notifications')));
-				$message->from('no-reply@luthansa.co.id', 'Kwitansi pembayaran Invoice '.$row->number.' Luthansa Groups Tour & Transport');
+				$message->from('no-reply@luthansa.co.id', 'Kwitansi pembayaran Invoice '.$row->number.' Luthansa Group');
 				$message->to($row->customer_email);
 				$message->bcc($bcc);
 				$message->subject('Kwitansi pembayaran Invoice '.$row->number);

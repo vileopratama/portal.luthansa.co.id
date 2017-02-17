@@ -36,7 +36,7 @@ class MailRequestPassword extends Command
 			foreach($customers as $key => $customer) {
 				/*sent email*/
 				Mail::send('emails.request-password',array('customer' => $customer),function($message) use($customer) {
-					$message->from('no-reply@luthansa.co.id','Request Reset Password Baru, Luthansa Groups Tour & Transport');
+					$message->from('no-reply@luthansa.co.id','Request Reset Password Baru, Luthansa Group');
 					$message->to($customer->email);
 					$message->subject('Request Reset Password Baru');
 				});

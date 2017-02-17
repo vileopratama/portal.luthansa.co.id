@@ -40,9 +40,9 @@ class MailListSalesOrder extends Command
 		if(count($sales_orders) > 0 && count($email_to) > 0) {
 			/*sent email*/
 			Mail::send('emails.sales-order-list',array('rows' => $sales_orders),function($message) use($email_to) {
-				$message->from('no-reply@luthansa.co.id','List Order '.date('d M Y').', Luthansa GroupTour & Transport');
+				$message->from('no-reply@luthansa.co.id','List Order '.date('d M Y').', Luthansa Group');
 				$message->to($email_to);
-				$message->subject('List Order '.date('d M Y').', Luthansa Group, Tour & Transport');
+				$message->subject('List Order '.date('d M Y'));
 			});
 		}
 	}

@@ -40,9 +40,9 @@ class MailListSalesInvoice extends Command
 		if(count($sales_invoices) > 0 && count($email_to) > 0) {
 			/*sent email*/
 			Mail::send('emails.sales-invoice-list',array('rows' => $sales_invoices),function($message) use($email_to) {
-				$message->from('no-reply@luthansa.co.id','Revenue penjualan'.date('d M Y').', Luthansa GroupTour & Transport');
+				$message->from('no-reply@luthansa.co.id','Revenue penjualan'.date('d M Y').', Luthansa Group');
 				$message->to($email_to);
-				$message->subject('Revenue penjualan per '.date('d M Y').', Luthansa Group, Tour & Transport');
+				$message->subject('Revenue penjualan per '.date('d M Y'));
 			});
 		}
 	}

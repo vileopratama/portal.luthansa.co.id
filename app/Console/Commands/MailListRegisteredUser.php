@@ -37,9 +37,9 @@ class MailListRegisteredUser extends Command
         if(count($customers) > 0 && count($email_to) > 0) {
 			  /*sent email*/
             Mail::send('emails.register-user-list',array('customers' => $customers),function($message) use($email_to) {
-                $message->from('no-reply@luthansa.co.id','Register User Per Tgl '.date('d M Y').', Luthansa Group, Tour & Transport');
+                $message->from('no-reply@luthansa.co.id','Register User Per Tgl '.date('d M Y').', Luthansa Group');
                 $message->to($email_to);
-                $message->subject('List Register User Per Tgl '.date('d M Y').', Luthansa Group, Tour & Transport');
+                $message->subject('List Register User Per Tgl '.date('d M Y'));
             });
         }
     }

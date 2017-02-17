@@ -41,7 +41,7 @@ class MailRejectedPayment extends Command {
 			/*sent email*/
 			Mail::send('emails.sales_invoice_reject_payment',array('data' => $row),function($message) use($row) {
 				$bcc = explode(';',trim(Setting::get('invoice_email_notifications')));
-				$message->from('no-reply@luthansa.co.id', 'Pembayaran Belum diterima atas Invoice '.$row->number.' Luthansa Groups Tour & Transport');
+				$message->from('no-reply@luthansa.co.id', 'Pembayaran Belum diterima atas Invoice '.$row->number.' Luthansa Group');
 				$message->to($row->customer_email);
 				$message->bcc($bcc);
 				$message->subject('Pembayaran Belum diterima atas Invoice '.$row->number);

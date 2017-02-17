@@ -70,7 +70,7 @@
 	                        <br/>
 	                        <br/>
 	                        <br/>
-	                        Luthansa Groups Tour & Transport
+	                        Luthansa Group
 						</td>
                     </tr>
 					
@@ -83,7 +83,7 @@
                     <tr>
                         <td>
                             <hr>
-                            <p>Copyright &copy; {!! date('Y') !!} Luthansa Groups Tour & Transport</p>
+                            <p>Copyright &copy; {!! date('Y') !!} Luthansa Group</p>
                         </td>
                     </tr>
                 </table>

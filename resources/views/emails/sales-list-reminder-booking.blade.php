@@ -10,7 +10,7 @@
 				<tbody>
 				<tr valign="top">
 					<td style="width:50%">
-						<img src="{!! asset('vendor/luthansa/img/small-logo.png') !!}" border="0" alt="Luthansa Groups Tour & Transport" class="CToWUd">
+						<img src="{!! asset('vendor/luthansa/img/small-logo.png') !!}" border="0" alt="Luthansa Group" class="CToWUd">
 					</td>
 					<td valign="middle" style="width:50%" align="right">
 						Tgl.Reminder : {!! date("d M Y") !!}
@@ -19,7 +19,7 @@
 				</tbody>
 			</table>
 			<div style="margin-top:30px;color:#333!important;font-family:arial,helvetica,sans-serif;font-size:12px">
-				<span style="color:#333333!important;font-weight:bold;font-family:arial,helvetica,sans-serif">Kpd Yth Management, <br/> Luthansa Groups Tour & Transport </span><br><br>
+				<span style="color:#333333!important;font-weight:bold;font-family:arial,helvetica,sans-serif">Kpd Yth Management, <br/> Luthansa Group </span><br><br>
 				<p style="font-size:8px;color:#c88039;font-weight:bold;text-decoration:none">Berikut adalah List Booking untuk Jadwal Perjalanan :</p>
 				<div style="margin-top:5px;clear:both">
 					<hr size="1">
@@ -59,7 +59,7 @@
 				</table>
 			</div>
 			<br><br>
-			<span>Copyright &copy; {!! date("Y") !!} Luthansa Group Tour &amp; Transport. All rights reserved.</span>
+			<span>Copyright &copy; {!! date("Y") !!} Luthansa Group. All rights reserved.</span>
 		</td>
 	</tr>
 	</tbody>

@@ -46,10 +46,10 @@ class MailQueue extends Command {
 			/*sent email*/
 			Mail::send('emails.queue',array('data' => $row,'items'=>$sales_order_details),function($message) use($row) {
 				$bcc = explode(';',trim(Setting::get('invoice_email_notifications')));
-				$message->from('no-reply@luthansa.co.id','Invoice Order, Luthansa GroupTour & Transport');
+				$message->from('no-reply@luthansa.co.id','Invoice Order, Luthansa Group');
 				$message->to($row->customer_email);
 				$message->bcc($bcc);
-				$message->subject('Invoice Order, Luthansa Group, Tour & Transport');
+				$message->subject('Invoice Order');
 			});
 			
 			//update
