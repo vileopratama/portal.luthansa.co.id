@@ -336,8 +336,8 @@ $(function() {
 	$("#armada_category_id").select2();	
 	$('input[name="total_passenger"]').number(true,0);
 	$('input[name="unit"]').number(true,0);
-	$('input[name="price"]').number(true,2);
-	$('input[name="cost_value"]').number(true,2);
+	$('input[name="price"]').number(true,0);
+	$('input[name="cost_value"]').number(true,0);
 			
 	$('.add_items').on('click', function(event) {
 		event.preventDefault();

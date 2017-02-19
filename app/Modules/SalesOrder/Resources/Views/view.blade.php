@@ -156,15 +156,15 @@
 													<td>{!! $row->armada_category_name !!}</td>
 													<td>{!! $row->qty !!}</td>
 													<td>{!! $row->description !!}</td>
-													<td class="text-right">{!! number_format($row->price,2) !!}</td>
+													<td class="text-right">{!! number_format($row->price,0) !!}</td>
 													<td class="text-right">{!! number_format($row->days,0) !!}</td>
-													<td class="text-right">{!! number_format($subtotal,2) !!}</td>
+													<td class="text-right">{!! number_format($subtotal,0) !!}</td>
 													
 												</tr>
 											@endforeach
 												<tr class="cart_line">
 													<td class="text-right" colspan="5">{!! Lang::get('global.subtotal') !!}</td>
-													<td class="text-right">{!! number_format($subtotal,2) !!}</td>
+													<td class="text-right">{!! number_format($subtotal,0) !!}</td>
 												</tr>
 										@endif
 									</tbody>
@@ -190,13 +190,13 @@
 												@endphp
 												<tr class="cart_line">
 													<td>{!! $row->description !!}</td>
-													<td class="text-right">{!! number_format($row->cost,2) !!}</td>
+													<td class="text-right">{!! number_format($row->cost,0) !!}</td>
 													
 												</tr>
 											@endforeach
 												<tr class="cart_line">
 													<td class="text-right">{!! Lang::get('global.subtotal') !!}</td>
-													<td class="text-right">{!! number_format($subtotal,2) !!}</td>
+													<td class="text-right">{!! number_format($subtotal,0) !!}</td>
 												</tr>
 										@endif
 									</tbody>

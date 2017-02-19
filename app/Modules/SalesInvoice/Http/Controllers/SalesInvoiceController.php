@@ -62,7 +62,7 @@ class SalesInvoiceController extends Controller {
 				->join('customers as c','c.id','=','si.customer_id')
 				->leftJoin('users as u1','u1.id','=','si.created_by')
 				->leftJoin('users as u2','u2.id','=','si.updated_by')
-				->select(['si.*','c.name as customer_name','c.email as customer_email'])
+				->select(['si.*','c.name as customer_name','c.email as customer_email','c.mobile_number'])
 				->selectRaw("DATE_FORMAT(si.invoice_date,'%d/%m/%Y') as invoice_date,DATE_FORMAT(si.due_date,'%d/%m/%Y') as due_date")
 				->selectRaw("DATE_FORMAT(si.booking_from_date,'%d/%m/%Y') as booking_from_date,DATE_FORMAT(si.booking_to_date,'%d/%m/%Y') as booking_to_date")
 				->selectRaw("DATE_FORMAT(si.created_at,'%d/%m/%Y %H:%i:%s') as created_at,DATE_FORMAT(si.updated_at,'%d/%m/%Y %H:%i:%s') as updated_at")
@@ -559,6 +559,34 @@ class SalesInvoiceController extends Controller {
 
 		return Response::json($params);
 
+	}
+	
+	public function do_update_last_item() {
+		$rowId = Input::get('rowId');
+		$price = Input::get('price');
+		$error_msg = "";
+		
+		if(!empty($price)) {
+			Cart::instance('sales-invoice')->update($rowId,['price' => $price]); 
+			$success = true;
+			$error_msg = "";
+			
+		} else {
+			$success = false;
+			$error_msg = Lang::get('message.price cannot empty');
+		}			
+		
+		/*$item = Cart::instance('sales-invoice')->get($rowId);
+		if($item) {
+			$price = empty($item->price) ? 0 : $item->price;
+		}*/
+		
+		$params = array(
+            'success' => $success,
+            'message' => $error_msg,
+        );
+		
+		return Response::json($params);
 	}
 
 	public function do_delete_item() {

@@ -132,7 +132,7 @@
 												{!! Form::select('armada_category_id',\App\Modules\ArmadaCategory\ArmadaCategory::list_dropdown(),isset($sales_invoice)?$sales_invoice->customer_id:null, ['class' => 'form-control input-md col-md-12','id'=>'armada_category_id','maxlength'=>11]) !!}
 											</td>
 											<td>
-												{!! Form::text('unit',isset($sales_invoice)?$sales_invoice->unit:null, ['class' => 'text-right form-control input-md','id'=>'unit','placeholder'=>'1','maxlength'=>3]) !!}
+												{!! Form::text('unit',isset($sales_invoice)?$sales_invoice->unit:null, ['class' => 'text-right form-control input-md','id'=>'unit','placeholder'=>'0','maxlength'=>3]) !!}
 											</td>
 											<td>
 												{!! Form::textarea('description',isset($sales_invoice)?$sales_invoice->description:null, ['rows' => 2,'class' => 'form-control input-md','id'=>'description','maxlength'=>100]) !!}
@@ -153,7 +153,8 @@
 													<td>{!! $row->options->armada_category_name !!}</td>
 													<td>{!! $row->qty !!}</td>
 													<td>{!! $row->name !!}</td>
-													<td>{!! number_format($row->price,2) !!}</td>
+													<td>{!! Form::text('price',$row->price, ['class' => 'price text-right form-control input-md','id'=>$row->rowId,'maxlength'=>25]) !!}</td>
+													<!--<td>{!! number_format($row->price,2) !!}</td>-->
 													<td> 
 														<span> <i class='fa fa-trash'></i> 
 														@if(App::access('d','sales-invoice'))
@@ -278,9 +279,9 @@ $(function() {
 	$("#armada_category_id").select2({ width: '100%' });	
 	$("#armada_id").select2({ width: '100%' });	
 	$('input[name="unit"]').number(true,0);
-	$('input[name="price"]').number(true,2);
-	$('input[name="cost_value"]').number(true,2);
-	$('input[name="expense_value"]').number(true,2);
+	$('input[name="price"]').number(true,0);
+	$('input[name="cost_value"]').number(true,0);
+	$('input[name="expense_value"]').number(true,0);
 					
 	$('.add_items').on('click', function(event) {
 		event.preventDefault();
@@ -327,7 +328,7 @@ $(function() {
 							//refresh input 
 							$('input[name="unit"]').val("1");
 							$('input[name="description"]').val("");
-							$('input[name="price"]').val("");
+							$('input[name="price"]:first').val("");
 							$('input[name="days"]').val("");
 							$('input[name="unit"]').focus();
 							$("div#divLoading").removeClass('show');			
@@ -343,6 +344,33 @@ $(function() {
 				$("div#divLoading").removeClass('show');
             }
 		});
+	});
+	
+	$("#items").on('blur', '.price', function(event){
+		event.preventDefault();
+		var rowId = $(this).attr("id");
+		var price = $(this).val();
+		var container = $(this);
+		$("div#divLoading").addClass('show');
+		$.ajax({
+            type  : "post",
+            url   : "{!! url('sales-invoice/do-update/last_item') !!}",
+            data  : {rowId : rowId,price : price},
+			dataType: "json",
+			cache : false,
+            beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf_token"]').attr('content'))},
+            success : function(response) {
+                if(response.success == true) {
+					$(container).parent().parent().find('.subtotal_row').each(function() {			
+					});
+					$("div#divLoading").removeClass('show');	
+                }
+			},
+			error : function() {
+				$("div#divLoading").removeClass('show');
+            }
+        });
+		return false;		
 	});
 			
 	$("#items").on('click', '.delete', function(event){
@@ -391,6 +419,7 @@ $(function() {
 		});	
 				
 	});
+	
 	
 	$('.add_cost').on('click', function(event) {
 		event.preventDefault();

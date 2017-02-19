@@ -19,6 +19,7 @@ Route::group(['prefix' => 'sales-invoice','middleware' => ['web']], function() {
 	Route::get('/preview/{slug}', ['uses' => 'SalesInvoiceController@preview','middleware' => ['permission','access_read:sales-invoice']]);
 	Route::get('/print/payment/{slug}', ['uses' => 'SalesInvoiceController@print_payment','middleware' => ['permission','access_read:sales-invoice']]);
 	Route::post('/do-update/item', ['uses' => 'SalesInvoiceController@do_update_item','middleware' => ['permission','access_update:sales-invoice']]);
+	Route::post('/do-update/last_item', ['uses' => 'SalesInvoiceController@do_update_last_item','middleware' => ['permission','access_update:sales-invoice']]);
 	Route::post('/do-delete/item', ['uses' => 'SalesInvoiceController@do_delete_item','middleware' => ['permission','access_delete:sales-invoice']]);
 	Route::post('/do-update/other-cost', ['uses' => 'SalesInvoiceController@do_update_other_cost','middleware' => ['permission','access_update:sales-invoice']]);
 	Route::post('/do-delete/other-cost', ['uses' => 'SalesInvoiceController@do_delete_other_cost','middleware' => ['permission','access_delete:sales-invoice']]);

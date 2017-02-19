@@ -67,6 +67,13 @@
 								</tr>
 								
 								<tr>
+									<th class="col-md-3">{!! Lang::get('global.booking to') !!}</th>
+									<td class="col-md-4">
+										{!! $sales_invoice->booking_to_date !!} ( {!! $sales_invoice->booking_total_days.' '.Lang::get('global.days') !!} )
+									</td>
+								</tr>
+								
+								<tr>
 									<th class="col-md-3">{!! Lang::get('global.total passengers') !!}</th>
 									<td class="col-md-4">
 										{!! $sales_invoice->total_passenger !!} <i class="fa fa-user text-primary"></i>
@@ -109,12 +116,14 @@
 										{!! $sales_invoice->customer_email !!}
 									</td>
 								</tr>
+								
 								<tr>
-									<th class="col-md-3">{!! Lang::get('global.booking to') !!}</th>
-									<td class="col-md-4">
-										{!! $sales_invoice->booking_to_date !!} ( {!! $sales_invoice->booking_total_days.' '.Lang::get('global.days') !!} )
+									<th class="col-md-3">{!! Lang::get('global.mobile number') !!}</th>
+									<td class="col-md-9">
+										{!! $sales_invoice->mobile_number !!}
 									</td>
 								</tr>
+								
 								<tr>
 									<th class="col-md-3">{!! Lang::get('global.type') !!}</th>
 									<td class="col-md-4">
@@ -176,15 +185,15 @@
 													<td>{!! $row->armada_category_name !!}</td>
 													<td>{!! $row->qty !!}</td>
 													<td>{!! $row->description !!}</td>
-													<td class="text-right">{!! number_format($row->price,2) !!}</td>
+													<td class="text-right">{!! number_format($row->price,0) !!}</td>
 													<td class="text-right">{!! number_format($row->days,0) !!}</td>
-													<td class="text-right">{!! number_format($subtotal,2) !!}</td>
+													<td class="text-right">{!! number_format($subtotal,0) !!}</td>
 													
 												</tr>
 											@endforeach
 												<tr class="cart_line">
 													<td class="text-right" colspan="5">{!! Lang::get('global.subtotal') !!}</td>
-													<td class="text-right">{!! number_format($subtotal,2) !!}</td>
+													<td class="text-right">{!! number_format($subtotal,0) !!}</td>
 												</tr>
 										@endif
 									</tbody>
@@ -210,13 +219,13 @@
 												@endphp
 												<tr class="cart_line">
 													<td>{!! $row->description !!}</td>
-													<td class="text-right">{!! number_format($row->cost,2) !!}</td>
+													<td class="text-right">{!! number_format($row->cost,0) !!}</td>
 													
 												</tr>
 											@endforeach
 												<tr class="cart_line">
 													<td class="text-right">{!! Lang::get('global.subtotal') !!}</td>
-													<td class="text-right">{!! number_format($subtotal,2) !!}</td>
+													<td class="text-right">{!! number_format($subtotal,0) !!}</td>
 												</tr>
 										@endif
 									</tbody>
@@ -243,13 +252,13 @@
 												<tr class="cart_line">
 													<td>{!! $row->number !!}</td>
 													<td>{!! $row->driver_name !!}</td>
-													<td class="text-right">{!! number_format($row->total_cost,2) !!}</td>
+													<td class="text-right">{!! number_format($row->total_cost,0) !!}</td>
 													
 												</tr>
 											@endforeach
 												<tr class="cart_line">
 													<td class="text-right" colspan="2">{!! Lang::get('global.subtotal') !!}</td>
-													<td class="text-right">{!! number_format($subtotal,2) !!}</td>
+													<td class="text-right">{!! number_format($subtotal,0) !!}</td>
 												</tr>
 										@endif
 									</tbody>
@@ -272,8 +281,8 @@
 										<tr class="balance_line">
 											<td>{!! $sales_invoice->invoice_date !!}</td>
 											<td>{!! Lang::get('global.balanced').' #'.$sales_invoice->id !!}</td>
-											<td class="text-right"> + {!! number_format($sales_invoice->total,2) !!}</td>
-											<td class="text-right"> {!! number_format($sales_invoice->total,2) !!}</td> 
+											<td class="text-right"> + {!! number_format($sales_invoice->total,0) !!}</td>
+											<td class="text-right"> {!! number_format($sales_invoice->total,0) !!}</td> 
 											<td></td>		
 										</tr>
 										@php
