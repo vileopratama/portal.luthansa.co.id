@@ -106,7 +106,6 @@ class SalesOrderController extends Controller {
 					'qty' => $row->qty,
 					'name' => $row->description,
 					'price' => $row->price,
-					'qty' => $row->days,
 					'options' => array(
 						'armada_category_name' => $row->armada_category_name,
 						'days' => $row->days,
