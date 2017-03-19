@@ -150,11 +150,11 @@
 								<br/>
 								<table id="items" class="table table-striped table-bordered">
 									<thead>
-										<th class="col-md-3">{!! Lang::get('global.armada') !!}</th>
-										<th class="col-md-1">{!! Lang::get('global.unit') !!}</th>
-										<th class="col-md-5">{!! Lang::get('global.description') !!}</th>
-										<th class="col-md-2">{!! Lang::get('global.price') !!}</th>
-										<th class="col-md-1">{!! Lang::get('global.edit') !!}</th>
+										<th class="col-md-2 col-xs-2">{!! Lang::get('global.armada') !!}</th>
+										<th class="col-md-2 col-xs-3">{!! Lang::get('global.unit') !!}</th>
+										<th class="col-md-4 col-xs-3">{!! Lang::get('global.description') !!}</th>
+										<th class="col-md-2 col-xs-3">{!! Lang::get('global.price') !!}</th>
+										<th class="col-md-1 col-xs-1 text-center">{!! Lang::get('global.edit') !!}</th>
 									</thead>
 									<tbody>
 										<tr class="first_line">
@@ -162,18 +162,18 @@
 												{!! Form::select('armada_category_id',\App\Modules\ArmadaCategory\ArmadaCategory::list_dropdown(),isset($sales_order)?$sales_order->customer_id:null, ['class' => 'form-control input-md col-md-12','id'=>'armada_category_id','maxlength'=>11]) !!}
 											</td>
 											<td>
-												{!! Form::text('unit',1, ['class' => 'text-right form-control input-md','id'=>'price','placeholder'=>'0','maxlength'=>3]) !!}
+												{!! Form::text('unit',null, ['class' => 'text-right form-control input-md','id'=>'price','placeholder'=>'0','maxlength'=>3]) !!}
 											</td>
 											<td>
 												{!! Form::textarea('description',null, ['rows' => 2,'class' => 'form-control input-md']) !!}
 											</td>
 											<td>
-												{!! Form::text('price',0, ['class' => 'text-right form-control input-md','id'=>'price','placeholder'=>'0','maxlength'=>25]) !!}
+												{!! Form::text('price',null, ['class' => 'text-right form-control input-md','id'=>'price','placeholder'=>'0','maxlength'=>25]) !!}
 											</td>
 											
 											<td>
 												@if(App::access('u','sales-order'))
-												<a href="#" class="add_items"><i class="fa fa-pencil"></i> {!! Lang::get('global.add item') !!}</a>
+												<a href="#" class="btn btn-primary btn-md add_items"><i class="fa fa-pencil"></i> {!! Lang::get('global.add item') !!}</a>
 												@endif
 											</td>
 										</tr>
@@ -186,7 +186,7 @@
 													<td>{!! Form::text('price',$row->price, ['class' => 'price text-right form-control input-md','id'=>$row->rowId,'maxlength'=>25]) !!}</td>
 													<td class="text-center"> <span> 
 														@if(App::access('d','sales-order'))
-														<a class='delete' id="{!! $row->rowId !!}" href='#'><i class='fa fa-trash'></i>  {!! Lang::get('global.delete') !!}</a>
+														<a class='btn btn-primary btn-md delete' id="{!! $row->rowId !!}" href='#'><i class='fa fa-trash'></i>  {!! Lang::get('global.delete') !!}</a>
 														@endif
 													</span></td>
 												</tr>
@@ -334,9 +334,9 @@ $(function() {
 	});
 	
 	$("#armada_category_id").select2();	
-	$('input[name="total_passenger"]').number(true,0);
-	$('input[name="unit"]').number(true,0);
-	$('input[name="price"]').number(true,0);
+	//$('input[name="total_passenger"]').number(true,0);
+	//$('input[name="unit"]').number(true,0);
+	//$('input[name="price"]').number(true,0);
 	$('input[name="cost_value"]').number(true,0);
 			
 	$('.add_items').on('click', function(event) {
