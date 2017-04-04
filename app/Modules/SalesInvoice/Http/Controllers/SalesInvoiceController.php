@@ -1186,9 +1186,9 @@ class SalesInvoiceController extends Controller {
 				$this->preview($fid,'F','uploads');
 				
 				//update payment receipt
-				$pid = $payment_sales_invoice->id;
-				$this->print_payment($pid,$output='D',$folder='');
-				
+				$pid = Crypt::encrypt($payment_sales_invoice->id);
+				//$this->print_payment($pid,$output='D',$folder='');
+				//$this->print_payment($pid,'F','uploads');
 				
 				/**check sent email
 				if($is_sent_email && $get_sales_invoice->customer_email) {
@@ -1206,6 +1206,8 @@ class SalesInvoiceController extends Controller {
 				//params json
 				$params ['success'] =  true;
 				$params ['payment'] = true;
+				$params ['total bill'] = $sum_sales_invoice;
+				$params ['total payment'] = $sum_sales_invoice_payment;
 				$params ['redirect'] = url('/sales-invoice/view/'.Crypt::encrypt($sales_invoice_id ));
 				$params ['message'] =  Lang::get('message.sales invoice payment successfully');
 

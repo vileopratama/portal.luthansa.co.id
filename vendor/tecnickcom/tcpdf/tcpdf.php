@@ -1523,7 +1523,8 @@ class TCPDF {
 	 * @protected
 	 * @since 5.8.017 (2010-08-24)
 	 */
-	protected $inxobj = false;
+	public $inxobj = false;
+	//protected $inxobj = false;
 
 	/**
 	 * Current XObject ID.

@@ -19,7 +19,8 @@
                 <table width="650px" cellspacing="0" cellpadding="3" class="container">
                     <tr>
                         <td>
-							Kpd Yth {!! $data->customer_name !!}
+							Kpd Yth <br/> 
+							{!! $data->customer_name !!}
 							<br/>
 							<br/>
 							Kami ingatkan bahwa perjalanan anda untuk besok hari :

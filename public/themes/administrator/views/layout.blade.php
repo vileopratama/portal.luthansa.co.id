@@ -29,9 +29,9 @@
         <button type="button" class="navbar-toggle navbar-toggle-right collapsed" data-toggle="collapse"
                 data-target="#app-navbar-collapse" aria-expanded="false"><span class="sr-only">Toggle navigation</span>
             <span class="zmdi zmdi-hc-lg zmdi-more"></span></button>
-        <button type="button" class="navbar-toggle navbar-toggle-right collapsed" data-toggle="collapse"
+        <!--<button type="button" class="navbar-toggle navbar-toggle-right collapsed" data-toggle="collapse"
                 data-target="#navbar-search" aria-expanded="false"><span class="sr-only">Toggle navigation</span> <span
-                    class="zmdi zmdi-hc-lg zmdi-search"></span></button>
+                    class="zmdi zmdi-hc-lg zmdi-search"></span></button>-->
         <a href="{!! url('/') !!}" class="navbar-brand visible-lg visible-md visible-sm"><span class="brand-icon"><img src="{!! Theme::asset('images/logo.png') !!}" /></span></a>
     </div>
 
@@ -81,7 +81,7 @@
 						@endif
 					</div>
                 </li>
-                <li class="dropdown">
+                <!--<li class="dropdown">
 					<a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="zmdi zmdi-hc-lg zmdi-settings"></i></a>
                     <ul class="dropdown-menu animated flipInY">
 						@if(App::access('r','setting'))
@@ -93,7 +93,7 @@
                         @endif
 						<li><a href="{!! url('/session/logout') !!}"><i class="fa fa-power-off"></i> {!! Lang::get('global.logout') !!}</a></li>
                     </ul>
-                </li>
+                </li>-->
 
             </ul>
         </div>
@@ -115,7 +115,7 @@
                     <ul>
                         <li class="dropdown">
                             <a href="javascript:void(0)" class="dropdown-toggle usertitle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <small>{!! Auth::user()->email !!}</small> <span class="caret"></span>
+                                <small>{!! Auth::user()->email !!} <span class="caret"></span></small> 
                             </a>
                             <ul class="dropdown-menu animated flipInY">
                                 <li><a class="text-color" href="{!! url('/') !!}"><span class="m-r-xs"><i class="fa fa-home"></i></span> <span>{!! Lang::get('global.dashboard') !!}</span></a></li>

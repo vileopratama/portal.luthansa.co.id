@@ -31,7 +31,7 @@ class MailReminderBooking extends Command
 	 */
 	public function handle() {
 		$sales_invoices = SalesInvoice::join('customers','customers.id','=','sales_invoices.customer_id')
-			->selectRaw("sales_invoices.number,DATE_FORMAT(sales_invoices.booking_from_date,'%d %M %Y') as booking_from_date,DATE_FORMAT(sales_invoices.booking_to_date,'%d %M %Y') as booking_to_date,customers.name as customer_name,customers.email as customer_email,sales_invoices.destination,sales_invoices.pick_up_point")
+			->selectRaw("sales_invoices.number,DATE_FORMAT(sales_invoices.booking_from_date,'%d %M %Y') as booking_from_date,DATE_FORMAT(sales_invoices.booking_to_date,'%d %M %Y') as booking_to_date,sales_invoices.booking_total_days,customers.name as customer_name,customers.email as customer_email,sales_invoices.destination,sales_invoices.pick_up_point")
 			->whereRaw("datediff(sales_invoices.booking_from_date,current_date()) = 1")
 			->get();
 		

@@ -19,7 +19,7 @@
                 <table width="650px" cellspacing="0" cellpadding="3" class="container">
                     <tr>
                         <td>
-							Kpd Yth {!! $sales_order->customer_name !!}
+							Kpd Yth <br/> {!! $sales_order->customer_name !!}
 							<br/>
 							<br/>
 							Berikut Kami kirimkan Invoice untuk Pembayaran

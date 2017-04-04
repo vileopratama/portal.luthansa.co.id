@@ -21,7 +21,7 @@
 						</tbody>
 					</table>
 					<div style="margin-top:30px;color:#333!important;font-family:arial,helvetica,sans-serif;font-size:12px">
-						<span style="color:#333333!important;font-weight:bold;font-family:arial,helvetica,sans-serif">Kpd Yth {!! $data->customer_name !!},</span><br><br>
+						<span style="color:#333333!important;font-weight:bold;font-family:arial,helvetica,sans-serif">Kpd Yth <br/> {!! $data->customer_name !!},</span><br><br>
 						<p style="font-size:8px;color:#c88039;font-weight:bold;text-decoration:none">Terima kasih anda telah melakukan Order di Luthansa Group, Total pembayaran akan dikalkulasikan oleh Bagian Admin kami pada saat anda selesai order , harap mengisi No Handphone & alamat email dengan benar, kami akan informasikan melalui nomor handphone atau email, Terima kasih.</p>
 						<div style="margin-top:5px;clear:both">
 							<hr size="1">

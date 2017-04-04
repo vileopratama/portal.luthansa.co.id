@@ -19,7 +19,7 @@
                 <table width="650px" cellspacing="0" cellpadding="3" class="container">
                     <tr>
                         <td>
-							Kpd Yth {!! $data->customer_name !!}
+							Kpd Yth <br/>{!! $data->customer_name !!}
 							<br/>
 							<br/>
 							Mohon Maaf Pembayaran anda belum bisa diverifikasi dan mengalami kegagalan Pembayaran :
@@ -62,9 +62,7 @@
 	                        <br/>
 	                        <br/>
 							Terima kasih atas kepercayaan anda memilih kami sebagai partner transportasi anda.
-	                        <br/>
-	                        <br/>
-	                        Management
+	                       
 	                        <br/>
 	                        <br/>
 	                        <br/>

@@ -10297,7 +10297,8 @@ a, a:active, a:hover, a:link, a:visited {
 ol, ul {
     list-style-type: none;
     padding: 0;
-    margin: 0
+    margin: 0;
+	margin-left:10px;
 }
 
 .row {
@@ -10342,7 +10343,8 @@ small {
 
 h4, h5 {
     margin-top: 8px;
-    margin-bottom: 6px
+    margin-bottom: 6px;
+	margin-left:10px;
 }
 
 .alert-custom, .form-group {
@@ -15373,7 +15375,7 @@ body.menubar-top .menubar.light {
 }
 
 .app-user .media-body {
-    display: none
+    
 }
 
 .app-user .dropdown-menu {

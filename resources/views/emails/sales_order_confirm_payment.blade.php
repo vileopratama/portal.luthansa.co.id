@@ -61,9 +61,9 @@
 	                        Kami akan memproses dalam waktu 1x24 Jam , mohon menunggu konfirmasi kami selanjutnya.
 							<br/><br/>
 							Terima kasih atas kepercayaan anda memilih kami sebagai partner transportasi anda.
-	                        <br/>
-	                        <br/>
-	                        Management
+	                        
+	                        
+	                        
 	                        <br/>
 	                        <br/>
 	                        <br/>

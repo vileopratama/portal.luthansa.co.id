@@ -19,7 +19,7 @@
                 <table width="650px" cellspacing="0" cellpadding="3" class="container">
                     <tr>
                         <td>
-							Dear {!! $customer->name !!},
+							Kpd Yth <br/>{!! $customer->name !!},
 							<br><br/>
 	                        Anda telah melakukan Permintaan/Reset Password baru.
 	                        <br/><br/>

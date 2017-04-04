@@ -19,7 +19,7 @@
 				</tbody>
 			</table>
 			<div style="margin-top:30px;color:#333!important;font-family:arial,helvetica,sans-serif;font-size:12px">
-				<span style="color:#333333!important;font-weight:bold;font-family:arial,helvetica,sans-serif">Kpd Yth Management, <br/> Luthansa Group </span><br><br>
+				<span style="color:#333333!important;font-weight:bold;font-family:arial,helvetica,sans-serif">Kpd Yth <br/> Luthansa Group </span><br><br>
 				<p style="font-size:8px;color:#c88039;font-weight:bold;text-decoration:none">Berikut adalah list Penawaran Order:</p>
 				<div style="margin-top:5px;clear:both">
 					<hr size="1">
@@ -41,7 +41,7 @@
 							<td style="padding:10px" align="left" >{!! '#'.$row->number !!}</td>
 							<td style="padding:10px" align="left">{!! $row->customer_name !!}</td>
 							<td style="padding:10px" align="left">{!! $row->booking_from_date .' s/d '.$row->booking_to_date !!} ({!! $row->booking_total_days !!})</td>
-							<td style="padding:10px" align="right" >{!! number_format($row->total,2) !!}</td>
+							<td style="padding:10px" align="right" >{!! number_format($row->total,0) !!}</td>
 						</tr>
 						@php
 							$total+=$row->total;
@@ -56,7 +56,7 @@
 					</tr>
 					<tr>
 						<td colspan="3" style="padding:10px" align="left">Total Revenue ( {!! date('d M Y') !!} )</td>
-						<td style="padding:10px" align="right">{!! number_format($total,2) !!}</td>
+						<td style="padding:10px" align="right">{!! number_format($total,0) !!}</td>
 					</tr>
 					</tbody>
 				</table>

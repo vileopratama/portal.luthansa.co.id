@@ -19,13 +19,13 @@
                 <table width="650px" cellspacing="0" cellpadding="3" class="container">
                     <tr>
                         <td>
-							Kpd Yth {!! $sales_invoice->customer_name !!}
+							Kpd Yth <br/>{!! $sales_invoice->customer_name !!}
 							<br/>
 							<br/>
 							Berikut Kami kirimkan Invoice untuk Pembayaran anda dapat melakukan konfirmasi sesuai dengan arahan
 	                        invoice yang telah dikirimkan atau melalui link website kami
 	                        <br/>
-	                        {!! env('APP_FRONTEND', 'http://luthansa.co.id') !!}
+	                        {!! env('APP_FRONTEND', 'https://luthansa.co.id') !!}
 	                        
 						</td>
                     </tr>
