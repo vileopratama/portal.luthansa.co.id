@@ -173,7 +173,8 @@ class SalesInvoiceController extends Controller {
 		$sales_invoice = SalesInvoice::join('customers','customers.id','=','sales_invoices.customer_id')
 			->where(['sales_invoices.id' => $id])
 			->select(['sales_invoices.*','customers.name as customer_name','customers.address as customer_address','customers.phone_number','customers.fax_number','customers.mobile_number as customer_mobile_number','customers.city','customers.zip_code'])
-			->selectRaw("DATE_FORMAT(invoice_date,'%d/%m/%Y') as invoice_date,DATE_FORMAT(due_date,'%d/%m/%Y') as due_date")
+			->selectRaw("DATE_FORMAT(invoice_date,'%d %M %Y') as invoice_date,DATE_FORMAT(due_date,'%d %M %Y') as due_date")
+			->selectRaw("DATE_FORMAT(booking_from_date,'%d %M %Y') as booking_from_date,DATE_FORMAT(booking_to_date,'%d %M %Y') as booking_to_date")
 			->first();
 
 		$sales_invoice_details = SalesInvoiceDetail::join('armada_categories','armada_categories.id','=','sales_invoice_details.armada_category_id')
