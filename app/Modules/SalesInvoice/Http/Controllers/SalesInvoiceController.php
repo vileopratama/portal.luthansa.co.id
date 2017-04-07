@@ -1392,7 +1392,7 @@ class SalesInvoiceController extends Controller {
 		$x = $x;
 		$y = $y;
 		PDF::SetXY($x+45,$y=$y);
-		PDF::Cell(90,10,strtoupper(be_regarded($sales_invoice_payment->value)). ' Rupiah',0,0,'L',false,'',0,10,'T','M');
+		PDF::Cell(90,10,strtoupper(be_regarded($sales_invoice_payment->value).' '.Lang::get("printer.rupiah")),0,0,'L',false,'',0,10,'T','M');
 
 		$x = $x;
 		$y = $y + 8;
