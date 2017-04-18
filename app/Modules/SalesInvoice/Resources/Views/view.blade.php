@@ -175,11 +175,12 @@
 									<tbody>
 										@if($sales_invoice_details)
 											@php
-												$subtotal = 0;
+												$grandtotal = 0;
 											@endphp
 											@foreach($sales_invoice_details as $key => $row)
 												@php
 													$subtotal+=$row->price*$row->qty*$row->days;
+													$grandtotal+=$subtotal;
 												@endphp
 												<tr class="cart_line">
 													<td>{!! $row->armada_category_name !!}</td>
@@ -193,7 +194,7 @@
 											@endforeach
 												<tr class="cart_line">
 													<td class="text-right" colspan="5">{!! Lang::get('global.subtotal') !!}</td>
-													<td class="text-right">{!! number_format($subtotal,0) !!}</td>
+													<td class="text-right">{!! number_format($grandtotal,0) !!}</td>
 												</tr>
 										@endif
 									</tbody>
